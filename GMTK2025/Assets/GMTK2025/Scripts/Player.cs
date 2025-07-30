@@ -43,7 +43,7 @@ public class Player : MonoBehaviour
             transform.Translate(Vector3.right * Time.deltaTime * speed);
         }
 
-        if (Input.GetKey(KeyCode.K))
+        if (Input.GetKeyDown(KeyCode.K))
         {
             Die();
         }
