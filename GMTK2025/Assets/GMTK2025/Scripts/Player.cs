@@ -6,8 +6,10 @@ public class Player : MonoBehaviour
     private float speed = 5f;
     private float rotationSpeed = 180f;
     private bool isControllable;
+    private new Rigidbody rigidbody;
     void Start()
     {
+        rigidbody = GetComponent<Rigidbody>();
         isControllable = true;
     }
     void Update()
@@ -22,6 +24,7 @@ public class Player : MonoBehaviour
     public void Die()
     {
         isControllable = false;
+        rigidbody.constraints = RigidbodyConstraints.None;
         PlayerController.instance.SwitchToNewPlayer();
     }
 
