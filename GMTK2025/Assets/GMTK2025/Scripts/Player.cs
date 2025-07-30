@@ -30,31 +30,32 @@ public class Player : MonoBehaviour
 
     void HandleUserInput()
     {
-        float moveInput = 0f;
-        float rotationInput = 0f;
+        var direction = Vector3.zero;
         if (Input.GetKey(KeyCode.W))
         {
-            moveInput += 1f;
+            direction += Vector3.forward;
         }
         
         if (Input.GetKey(KeyCode.S))
         {
-            moveInput -= 1f;
+            direction += Vector3.back;
         }
 
         if (Input.GetKey(KeyCode.D))
         {
-            rotationInput += 1f;
+            direction += Vector3.right;
         }
         
         if (Input.GetKey(KeyCode.A))
         {
-            rotationInput -= 1f;
+            direction += Vector3.left;
         }
-        transform.Translate(Vector3.forward * moveInput * Time.deltaTime * speed);
-        transform.Rotate(Vector3.up * rotationInput * Time.deltaTime * rotationSpeed);
 
-        
+        if (direction != Vector3.zero)
+        {
+            transform.LookAt(transform.position + direction);
+            transform.Translate(Vector3.forward* speed * Time.deltaTime);
+        }
 
         if (Input.GetKeyDown(KeyCode.K))
         {
