@@ -1,12 +1,17 @@
-using System.Diagnostics;
 using UnityEngine;
 
 public class Player : MonoBehaviour
 {
     private float speed = 5f;
-    private float rotationSpeed = 180f;
     private bool isControllable;
     private new Rigidbody rigidbody;
+    private enum State
+    {
+        Idle,
+        Jumping,
+    }
+    private State currentState = State.Idle;
+
     void Start()
     {
         rigidbody = GetComponent<Rigidbody>();
@@ -14,10 +19,19 @@ public class Player : MonoBehaviour
     }
     void Update()
     {
-
         if (isControllable)
         {
             HandleUserInput();
+        }
+    }
+
+    private void FixedUpdate()
+    {
+        if (currentState == State.Jumping && IsGrounded())
+        {
+            isControllable = true;
+            currentState = State.Idle;
+            Debug.Log("Landed!");
         }
     }
 
@@ -54,12 +68,26 @@ public class Player : MonoBehaviour
         if (direction != Vector3.zero)
         {
             transform.LookAt(transform.position + direction);
-            transform.Translate(Vector3.forward* speed * Time.deltaTime);
+            transform.Translate(Vector3.forward * speed * Time.deltaTime);
+        }
+
+        if (Input.GetKeyDown(KeyCode.Space) && IsGrounded())
+        {
+            currentState = State.Jumping;
+            isControllable = false;
+            transform.transform.position += Vector3.up * 0.3f; // Small boost to stop grounded state issues
+            rigidbody.AddForce(Vector3.up * 5f + transform.forward * 5f, ForceMode.Impulse);
+            Debug.Log("Jumping!");
         }
 
         if (Input.GetKeyDown(KeyCode.K))
         {
             Die();
         }
+    }
+
+    bool IsGrounded()
+    {
+        return Physics.Raycast(transform.position, Vector3.down, 1.1f);
     }
 }
