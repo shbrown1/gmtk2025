@@ -80,10 +80,12 @@ public class Player : MonoBehaviour
             Debug.Log("Jumping!");
         }
 
+        /*
         if (Input.GetKeyDown(KeyCode.K))
         {
             Die();
         }
+        */
     }
 
     bool IsGrounded()
