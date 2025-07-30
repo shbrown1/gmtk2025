@@ -17,7 +17,9 @@ public class CameraObject : MonoBehaviour //naming this file "camera" broke a to
     {
         if (player != null)
         {
-            transform.position = player.position + offset;
+            Vector3 rotatedOffset = player.rotation * offset;
+            transform.position = player.position + rotatedOffset;
+            transform.LookAt(player.position + Vector3.up * 1.5f);
         }
     }
 

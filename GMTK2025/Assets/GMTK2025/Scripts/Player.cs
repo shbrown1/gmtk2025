@@ -1,10 +1,11 @@
+using System.Diagnostics;
 using UnityEngine;
 
 public class Player : MonoBehaviour
 {
     private float speed = 5f;
+    private float rotationSpeed = 180f;
     private bool isControllable;
-
     void Start()
     {
         isControllable = true;
@@ -26,22 +27,31 @@ public class Player : MonoBehaviour
 
     void HandleUserInput()
     {
+        float moveInput = 0f;
+        float rotationInput = 0f;
         if (Input.GetKey(KeyCode.W))
         {
-            transform.Translate(Vector3.forward * Time.deltaTime * speed);
+            moveInput += 1f;
         }
+        
         if (Input.GetKey(KeyCode.S))
         {
-            transform.Translate(Vector3.back * Time.deltaTime * speed);
+            moveInput -= 1f;
         }
-        if (Input.GetKey(KeyCode.A))
-        {
-            transform.Translate(Vector3.left * Time.deltaTime * speed);
-        }
+
         if (Input.GetKey(KeyCode.D))
         {
-            transform.Translate(Vector3.right * Time.deltaTime * speed);
+            rotationInput += 1f;
         }
+        
+        if (Input.GetKey(KeyCode.A))
+        {
+            rotationInput -= 1f;
+        }
+        transform.Translate(Vector3.forward * moveInput * Time.deltaTime * speed);
+        transform.Rotate(Vector3.up * rotationInput * Time.deltaTime * rotationSpeed);
+
+        
 
         if (Input.GetKeyDown(KeyCode.K))
         {
