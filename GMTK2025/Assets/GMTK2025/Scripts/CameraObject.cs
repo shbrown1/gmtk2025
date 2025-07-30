@@ -6,6 +6,12 @@ public class CameraObject : MonoBehaviour //naming this file "camera" broke a to
 
     [SerializeField] private Transform player;
     [SerializeField] private Vector3 offset;
+    public static CameraObject instance;
+
+    void Awake()
+    {
+        instance = this;
+    }
 
     void LateUpdate()
     {
@@ -13,5 +19,10 @@ public class CameraObject : MonoBehaviour //naming this file "camera" broke a to
         {
             transform.position = player.position + offset;
         }
+    }
+
+    public void UpdatePlayerToFollow(Transform newPlayer)
+    {
+        player = newPlayer;
     }
 }
