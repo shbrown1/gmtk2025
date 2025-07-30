@@ -6,7 +6,7 @@ public class SpikeFloor : MonoBehaviour
     {
         Player collidedPlayer = collision.gameObject.GetComponent<Player>();
 
-        if (collidedPlayer != null)
+        if (collidedPlayer != null && collidedPlayer.IsCurrentPlayer())
         {
             collidedPlayer.Die();
         }

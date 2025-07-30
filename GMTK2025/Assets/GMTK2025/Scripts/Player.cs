@@ -25,6 +25,11 @@ public class Player : MonoBehaviour
         }
     }
 
+    public bool IsCurrentPlayer()
+    {
+        return isControllable;
+    }
+
     private void FixedUpdate()
     {
         if (currentState == State.Jumping && IsGrounded())
@@ -37,9 +42,12 @@ public class Player : MonoBehaviour
 
     public void Die()
     {
-        isControllable = false;
-        rigidbody.constraints = RigidbodyConstraints.None;
-        PlayerController.instance.SwitchToNewPlayer();
+        if (isControllable)
+        {
+            isControllable = false;
+            rigidbody.constraints = RigidbodyConstraints.None;
+            PlayerController.instance.SwitchToNewPlayer();
+        }
     }
 
     void HandleUserInput()
