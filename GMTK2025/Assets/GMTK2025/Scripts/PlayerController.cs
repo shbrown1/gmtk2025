@@ -15,7 +15,5 @@ public class PlayerController : MonoBehaviour
     public void SwitchToNewPlayer()
     {
         currentPlayer = Instantiate(playerPrefab, spawnPosition, Quaternion.identity);
-        CameraObject.instance.UpdatePlayerToFollow(currentPlayer.transform);
-
     }
 }
