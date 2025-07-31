@@ -51,7 +51,7 @@ public class Player : MonoBehaviour
         if (isControllable)
         {
             isControllable = false;
-            rigidbody.constraints = RigidbodyConstraints.None;
+            Destroy(GetComponent<Collider>()); // Remove capsule collider for ragdoll effect
             Model.SetActive(false);
             Ragdoll.SetActive(true);
             PlayerController.instance.SwitchToNewPlayer();
