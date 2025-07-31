@@ -5,6 +5,7 @@ public class WallInteractable : MonoBehaviour , IInteractable
     public void Interact()
     {
         Debug.Log("Start Climbing Wall");
+        FindAnyObjectByType<CameraManager>().ChangeCameraMode(CameraManager.CameraMode.LookingAtWall);
     }
 
     public string Prompt()
