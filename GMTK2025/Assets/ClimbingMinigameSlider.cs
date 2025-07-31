@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Rendering;
 using UnityEngine.UI;
 
 public class ClimbingMinigameSlider : MonoBehaviour
@@ -43,8 +44,6 @@ public class ClimbingMinigameSlider : MonoBehaviour
             direction = Direction.up;
         }
 
-        inSuccessZone = transform.position.y >= minSuccessHeight && transform.position.y <= maxSuccessHeight;
-
         if (inSuccessZone)
         {
             sprite.color = Color.green;
@@ -53,5 +52,36 @@ public class ClimbingMinigameSlider : MonoBehaviour
         {
             sprite.color = Color.red;
         }
+
+        CheckSuccessZone();
+        HandleInput();
+    }
+
+    void HandleInput()
+    {
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            if (inSuccessZone)
+            {
+                Debug.Log("Climb");
+            }
+            else
+            {
+                Debug.Log("Fall");
+            }
+        }
+    }
+
+    void CheckSuccessZone()
+    {
+        RectTransform rt = GetComponent<RectTransform>();
+        float spriteHeight = rt.rect.height;
+
+        //this assumes pivot in center
+        float bottomY = transform.position.y - spriteHeight / 2f;
+        float topY = transform.position.y - spriteHeight / 2f;
+
+        inSuccessZone = topY >= minSuccessHeight && bottomY <= maxSuccessHeight;
+        sprite.color = inSuccessZone ? Color.green : Color.red;
     }
 }
