@@ -2,9 +2,13 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    public GameObject Model;
+    public GameObject Ragdoll;
+
     private float speed = 5f;
     private bool isControllable;
     private new Rigidbody rigidbody;
+
     private enum State
     {
         Idle,
@@ -36,7 +40,6 @@ public class Player : MonoBehaviour
         {
             isControllable = true;
             currentState = State.Idle;
-            Debug.Log("Landed!");
         }
     }
 
@@ -46,6 +49,8 @@ public class Player : MonoBehaviour
         {
             isControllable = false;
             rigidbody.constraints = RigidbodyConstraints.None;
+            Model.SetActive(false);
+            Ragdoll.SetActive(true);
             PlayerController.instance.SwitchToNewPlayer();
         }
     }
@@ -85,7 +90,6 @@ public class Player : MonoBehaviour
             isControllable = false;
             transform.transform.position += Vector3.up * 0.3f; // Small boost to stop grounded state issues
             rigidbody.AddForce(Vector3.up * 5f + transform.forward * 5f, ForceMode.Impulse);
-            Debug.Log("Jumping!");
         }
 
         /*
