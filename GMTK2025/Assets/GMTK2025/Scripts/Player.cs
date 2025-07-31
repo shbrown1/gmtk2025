@@ -8,6 +8,7 @@ public class Player : MonoBehaviour
     private float speed = 5f;
     private bool isControllable;
     private new Rigidbody rigidbody;
+    private Animator animator;
 
     private enum State
     {
@@ -16,9 +17,10 @@ public class Player : MonoBehaviour
     }
     private State currentState = State.Idle;
 
-    void Start()
+    void Awake()
     {
         rigidbody = GetComponent<Rigidbody>();
+        animator = Model.GetComponentInChildren<Animator>();
         isControllable = true;
     }
     void Update()
@@ -40,6 +42,7 @@ public class Player : MonoBehaviour
         {
             isControllable = true;
             currentState = State.Idle;
+            animator.SetBool("IsJumping", false);
         }
     }
 
@@ -84,9 +87,12 @@ public class Player : MonoBehaviour
             transform.Translate(Vector3.forward * speed * Time.deltaTime);
         }
 
+        animator.SetFloat("Speed", direction.magnitude);
+
         if (Input.GetKeyDown(KeyCode.Space) && IsGrounded())
         {
             currentState = State.Jumping;
+            animator.SetBool("IsJumping", true);
             isControllable = false;
             transform.transform.position += Vector3.up * 0.3f; // Small boost to stop grounded state issues
             rigidbody.AddForce(Vector3.up * 5f + transform.forward * 5f, ForceMode.Impulse);
