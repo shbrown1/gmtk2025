@@ -10,7 +10,7 @@ interface IInteractable
 }
 public class Interactor : MonoBehaviour
 {
-    [SerializeField] private Transform interactorSource;
+    public Transform interactorSource;
     [SerializeField] private float interactRange;
     [SerializeField] private LayerMask interactableLayer;
     [SerializeField] private TMP_Text prompt;

@@ -6,6 +6,7 @@ public class CameraObject : MonoBehaviour //naming this file "camera" broke a to
 
     [SerializeField] private Transform player;
     [SerializeField] private Vector3 offset;
+    [SerializeField] private Interactor interactor;
     public static CameraObject instance;
 
     void Awake()
@@ -24,5 +25,6 @@ public class CameraObject : MonoBehaviour //naming this file "camera" broke a to
     public void UpdatePlayerToFollow(Transform newPlayer)
     {
         player = newPlayer;
+        interactor.interactorSource = newPlayer;
     }
 }
