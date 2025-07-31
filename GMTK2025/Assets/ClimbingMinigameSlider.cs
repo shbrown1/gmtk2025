@@ -1,27 +1,27 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ClimbingMinigameSlider : MonoBehaviour
 {
-    [SerializeField] private float minHeight;
-    [SerializeField] private float maxHeight;
+    private float minHeight = 0.25f * Screen.height;
+    private float maxHeight = Screen.height - (0.25f * Screen.height);
     [SerializeField] private float speed;
-    [SerializeField] private float minSuccessHeight;
-    [SerializeField] private float maxSuccessHeight;
-
-    [SerializeField] private Material successZoneMaterial;
-    [SerializeField] private Material failZoneMaterial;
+    private float minSuccessHeight = 0.35f * Screen.height;
+    private float maxSuccessHeight = Screen.height - (0.35f * Screen.height);
 
     public bool inSuccessZone;
-    private Renderer objectRenderer;
+    private Image sprite;
 
 
     private enum Direction { up, down };
     private Direction direction;
 
+    //TODO: scalable size (use lerping)
+    //TODO: check for input presses during move up or down
     void Start()
     {
         direction = Random.Range(1, 3) % 2 == 0 ? Direction.down : Direction.up;
-        objectRenderer = GetComponent<Renderer>();
+        sprite = GetComponent<Image>();
     }
     void Update()
     {
@@ -47,11 +47,11 @@ public class ClimbingMinigameSlider : MonoBehaviour
 
         if (inSuccessZone)
         {
-            objectRenderer.material = successZoneMaterial;
+            sprite.color = Color.green;
         }
         else
         {
-            objectRenderer.material = failZoneMaterial;
+            sprite.color = Color.red;
         }
     }
 }
