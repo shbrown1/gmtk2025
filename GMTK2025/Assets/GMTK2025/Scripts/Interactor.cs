@@ -27,25 +27,34 @@ public class Interactor : MonoBehaviour
     }
     void Update()
     {
-        FindNearestInteractable();
 
-        if (currentInteractable != null)
+        if (CameraManager.instance.GetCameraMode() != CameraManager.CameraMode.LookingAtWall)
         {
-            prompt.gameObject.SetActive(true);
+            FindNearestInteractable();
 
-            Vector3 screenPos = cam.WorldToScreenPoint(targetUIPos.position);
-            prompt.text = currentInteractable.Prompt();
-            promptUI.position = screenPos;
-
-            if (Input.GetKeyDown(KeyCode.E))
+            if (currentInteractable != null)
             {
-                currentInteractable.Interact();
+                prompt.gameObject.SetActive(true);
+
+                Vector3 screenPos = cam.WorldToScreenPoint(targetUIPos.position);
+                prompt.text = currentInteractable.Prompt();
+                promptUI.position = screenPos;
+
+                if (Input.GetKeyDown(KeyCode.E))
+                {
+                    currentInteractable.Interact();
+                }
+            }
+            else
+            {
+                prompt.gameObject.SetActive(false);
             }
         }
         else
         {
             prompt.gameObject.SetActive(false);
         }
+        
     }
 
     void FindNearestInteractable()

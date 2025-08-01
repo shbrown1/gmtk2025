@@ -34,6 +34,7 @@ public class CameraManager : MonoBehaviour
 
     private void Update()
     {
+        _player = PlayerController.instance.currentPlayer.GetComponent<Player>();
         var desiredPosition = Vector3.zero;
         var desiredRotation = Quaternion.identity;
         if (currentMode == CameraMode.Following)
