@@ -31,10 +31,10 @@ public class PlayerController : MonoBehaviour
     void ExitWallGame()
     {
         inWallGame = false;
+        currentPlayer.transform.position += new Vector3(0, 1, 4);
         Player player = currentPlayer.GetComponent<Player>();
         wallMinigame.SetActive(false);
         player.EndWallClimb();
-        currentPlayer.transform.position += new Vector3(0, 1, 2);
         FindAnyObjectByType<CameraManager>().ChangeCameraMode(CameraManager.CameraMode.Following);
     }
 
