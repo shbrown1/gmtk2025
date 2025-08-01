@@ -9,6 +9,7 @@ public class CameraManager : MonoBehaviour
     private Vector3 _wallRotation = new Vector3(13, -3, 0);
     private Camera _camera;
     private Player _player;
+    public static CameraManager instance;
 
     public enum CameraMode
     {
@@ -27,6 +28,8 @@ public class CameraManager : MonoBehaviour
         _player = FindAnyObjectByType<Player>();
         if (_player == null)
             Debug.LogError("Player not found on CameraManager");
+
+        instance = this;
     }
 
     private void Update()
@@ -53,5 +56,10 @@ public class CameraManager : MonoBehaviour
     public void ChangeCameraMode(CameraMode mode)
     {
         currentMode = mode;
+    }
+
+    public CameraMode GetCameraMode()
+    {
+        return currentMode;
     }
 }

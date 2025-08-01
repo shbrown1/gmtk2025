@@ -27,8 +27,14 @@ public class Player : MonoBehaviour
     {
         if (isControllable)
         {
-            HandleUserInput();
+            rigidbody.useGravity = true;
+            HandleUserMovement();
         }
+    }
+
+    public void ToggleControllable(bool on)
+    {
+        isControllable = on;
     }
 
     public bool IsCurrentPlayer()
@@ -58,7 +64,7 @@ public class Player : MonoBehaviour
         }
     }
 
-    void HandleUserInput()
+    void HandleUserMovement()
     {
         var direction = Vector3.zero;
         if (Input.GetKey(KeyCode.W))

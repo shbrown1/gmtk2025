@@ -508,6 +508,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4be02b995598394c8955e18111c0c69, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &753248284 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 495711805603720512, guid: 621d21749753e4047bec3ddaf31a4c91, type: 3}
+  m_PrefabInstance: {fileID: 6192754756173013933}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &861267056
 GameObject:
   m_ObjectHideFlags: 0
@@ -526,7 +531,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &861267057
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1188,9 +1193,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd3063e92c2eddc458fa344aa04d1f6d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentPlayer: {fileID: 0}
+  currentPlayer: {fileID: 753248284}
   playerPrefab: {fileID: 495711805603720512, guid: 621d21749753e4047bec3ddaf31a4c91, type: 3}
   spawnPosition: {x: 0, y: 2, z: 0}
+  wallMinigame: {fileID: 861267056}
 --- !u!4 &1424998928
 Transform:
   m_ObjectHideFlags: 0
