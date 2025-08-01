@@ -32,6 +32,16 @@ public class Player : MonoBehaviour
             rigidbody.useGravity = true;
             HandleUserMovement();
         }
+
+        if(CameraManager.instance.GetCameraMode() == CameraManager.CameraMode.Following && transform.position.z > 60)
+        {
+            CameraManager.instance.ChangeCameraMode(CameraManager.CameraMode.LookingAtStairs);
+        }
+        else if(CameraManager.instance.GetCameraMode() == CameraManager.CameraMode.LookingAtStairs && transform.position.z < 60)
+        {
+            CameraManager.instance.ChangeCameraMode(CameraManager.CameraMode.Following);
+        }
+
         if (CameraManager.instance.GetCameraMode() == CameraManager.CameraMode.LookingAtWall)
         {
             rigidbody.useGravity = false;
