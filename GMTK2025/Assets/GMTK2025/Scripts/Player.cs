@@ -33,11 +33,11 @@ public class Player : MonoBehaviour
             HandleUserMovement();
         }
 
-        if(CameraManager.instance.GetCameraMode() == CameraManager.CameraMode.Following && transform.position.z > 60)
+        if(CameraManager.instance.GetCameraMode() == CameraManager.CameraMode.Following && transform.position.z > 63)
         {
             CameraManager.instance.ChangeCameraMode(CameraManager.CameraMode.LookingAtStairs);
         }
-        else if(CameraManager.instance.GetCameraMode() == CameraManager.CameraMode.LookingAtStairs && transform.position.z < 60)
+        else if(CameraManager.instance.GetCameraMode() == CameraManager.CameraMode.LookingAtStairs && transform.position.z < 63)
         {
             CameraManager.instance.ChangeCameraMode(CameraManager.CameraMode.Following);
         }
