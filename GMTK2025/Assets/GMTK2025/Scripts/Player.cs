@@ -56,6 +56,7 @@ public class Player : MonoBehaviour
 
     public void StartWallClimb()
     {
+        animator.SetFloat("Speed", 0);
         animator.SetBool("isClimbing", true);
         isControllable = false;
     }
