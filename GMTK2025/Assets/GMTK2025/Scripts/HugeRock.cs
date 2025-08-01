@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class HugeRock : MonoBehaviour
 {
+    public AnimationCurve LiftCurve;
     private float LiftDistance = 10f;
     private float LiftSpeed = 1f;
-
     private List<RockHandle> _rockHandles = new List<RockHandle>();
     private Player _player;
     private Vector3 _startPosition;
@@ -31,8 +31,11 @@ public class HugeRock : MonoBehaviour
                 _currentLiftPercentage -= Time.deltaTime * LiftSpeed;
 
             _currentLiftPercentage = Mathf.Clamp(_currentLiftPercentage, 0f, 1f);
+            var evaluatedLift = LiftCurve.Evaluate(_currentLiftPercentage);
 
-            transform.position = Vector3.Lerp(_startPosition, _startPosition + _liftOffset, _currentLiftPercentage);
+            transform.position = Vector3.Lerp(_startPosition, _startPosition + _liftOffset, evaluatedLift);
+            foreach (var handle in _rockHandles)
+                handle.SetLiftPercentage(evaluatedLift);
         }
     }
 }
