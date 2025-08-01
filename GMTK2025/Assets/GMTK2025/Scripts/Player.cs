@@ -30,6 +30,38 @@ public class Player : MonoBehaviour
             rigidbody.useGravity = true;
             HandleUserMovement();
         }
+        if (CameraManager.instance.GetCameraMode() == CameraManager.CameraMode.LookingAtWall)
+        {
+            rigidbody.useGravity = false;
+            HandleWallGameMovement();
+        }
+    }
+
+    void HandleWallGameMovement()
+    {
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            ClimbingMinigameSlider climbingMinigame = FindAnyObjectByType<ClimbingMinigameSlider>();
+
+            if (climbingMinigame.inSuccessZone)
+            {
+                ClimbWall(climbingMinigame.climbDistance);
+            }
+            else
+            {
+                FallFromWall(climbingMinigame.fallDistance);
+            }
+        }
+    }
+
+    void ClimbWall(float distance)
+    {
+        transform.position += new Vector3(0, distance, 0);
+    }
+    //these could be the same function but seperating them since they'll probably use different animations
+    void FallFromWall(float distance)
+    {
+        transform.position -= new Vector3(0, distance, 0);
     }
 
     public void ToggleControllable(bool on)
@@ -114,6 +146,6 @@ public class Player : MonoBehaviour
 
     bool IsGrounded()
     {
-        return Physics.Raycast(transform.position, Vector3.down, 1.1f);
+        return Physics.Raycast(transform.position, Vector3.down, 1.1f) && CameraManager.instance.GetCameraMode() != CameraManager.CameraMode.LookingAtWall;
     }
 }

@@ -7,6 +7,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private GameObject playerPrefab;
     [SerializeField] private Vector3 spawnPosition;
     [SerializeField] private GameObject wallMinigame;
+    private bool inWallGame;
 
     void Awake()
     {
@@ -20,8 +21,26 @@ public class PlayerController : MonoBehaviour
 
     public void StartWallGame()
     {
-            Player player = currentPlayer.GetComponent<Player>();
-            player.ToggleControllable(false);
-            wallMinigame.SetActive(true);
+        inWallGame = true;
+        Player player = currentPlayer.GetComponent<Player>();
+        player.ToggleControllable(false);
+        wallMinigame.SetActive(true);
+    }
+
+    void ExitWallGame()
+    {
+        inWallGame = false;
+        Player player = currentPlayer.GetComponent<Player>();
+        player.ToggleControllable(true);
+        wallMinigame.SetActive(false);
+        FindAnyObjectByType<CameraManager>().ChangeCameraMode(CameraManager.CameraMode.Following);
+    }
+
+    void Update()
+    {
+        if (inWallGame && currentPlayer.GetComponent<Player>().transform.position.y >= 18) //wall height
+        {
+            ExitWallGame();
+        }
     }
 }
