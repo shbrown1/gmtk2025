@@ -9,6 +9,8 @@ public class ClimbingMinigameSlider : MonoBehaviour
     [SerializeField] private float speed;
     private float minSuccessHeight = 0.35f * Screen.height;
     private float maxSuccessHeight = Screen.height - (0.35f * Screen.height);
+    public float climbDistance;
+    public float fallDistance;
 
     public bool inSuccessZone;
     private Image sprite;
@@ -18,7 +20,6 @@ public class ClimbingMinigameSlider : MonoBehaviour
     private Direction direction;
 
     //TODO: scalable size (use lerping)
-    //TODO: check for input presses during move up or down
     void Start()
     {
         direction = Random.Range(1, 3) % 2 == 0 ? Direction.down : Direction.up;
