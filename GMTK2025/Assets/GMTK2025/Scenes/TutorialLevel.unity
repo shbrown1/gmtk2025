@@ -1218,6 +1218,7 @@ MonoBehaviour:
   fallDistance: 0.5
   RedZone: {fileID: 827918863}
   GreenZone: {fileID: 95504987}
+  slider: {fileID: 861267059}
   inSuccessZone: 0
 --- !u!114 &861267059
 MonoBehaviour:

@@ -14,6 +14,7 @@ public class ClimbingMinigameSlider : MonoBehaviour
 
     [SerializeField] private Image RedZone;
     [SerializeField] private Image GreenZone;
+    [SerializeField] private Image slider;
 
     public bool inSuccessZone;
 
@@ -51,9 +52,12 @@ public class ClimbingMinigameSlider : MonoBehaviour
 
     void CheckSuccessZone()
     {
-        RectTransform sliderRT = GetComponent<RectTransform>();
-        RectTransform greenZoneRT = GreenZone.GetComponent<RectTransform>();
-        inSuccessZone = sliderRT.rect.Overlaps(greenZoneRT.rect);
+        RectTransform sliderRT = slider.GetComponent<RectTransform>();
+        //TODO: this check should feel better
+        float spriteHeight = sliderRT.rect.height;
+        float bottomY = transform.position.y - spriteHeight / 2f;
+        float topY = transform.position.y - spriteHeight / 2f;
+        inSuccessZone = topY >= minSuccessHeight && bottomY <= maxSuccessHeight;
     }
 
     private void SetGreenZoneHeight()
