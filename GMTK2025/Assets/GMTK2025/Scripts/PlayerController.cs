@@ -17,6 +17,7 @@ public class PlayerController : MonoBehaviour
     public void SwitchToNewPlayer()
     {
         currentPlayer = Instantiate(playerPrefab, spawnPosition, Quaternion.identity);
+        FindAnyObjectByType<Interactor>().interactorSource = currentPlayer.transform;
     }
 
     public void StartWallGame()
@@ -31,9 +32,10 @@ public class PlayerController : MonoBehaviour
     {
         inWallGame = false;
         Player player = currentPlayer.GetComponent<Player>();
-        player.ToggleControllable(true);
         wallMinigame.SetActive(false);
+        currentPlayer.transform.position += new Vector3(0, 1, 2);
         FindAnyObjectByType<CameraManager>().ChangeCameraMode(CameraManager.CameraMode.Following);
+        SwitchToNewPlayer(); //old guy will sit on the wall with a rope now?
     }
 
     void Update()
