@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class WallInteractable : MonoBehaviour , IInteractable
@@ -6,6 +7,7 @@ public class WallInteractable : MonoBehaviour , IInteractable
     {
         Debug.Log("Start Climbing Wall");
         FindAnyObjectByType<CameraManager>().ChangeCameraMode(CameraManager.CameraMode.LookingAtWall);
+        PlayerController.instance.StartWallGame();
     }
 
     public string Prompt()

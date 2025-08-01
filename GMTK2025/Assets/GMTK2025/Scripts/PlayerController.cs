@@ -6,6 +6,7 @@ public class PlayerController : MonoBehaviour
     public GameObject currentPlayer;
     [SerializeField] private GameObject playerPrefab;
     [SerializeField] private Vector3 spawnPosition;
+    [SerializeField] private GameObject wallMinigame;
 
     void Awake()
     {
@@ -15,5 +16,12 @@ public class PlayerController : MonoBehaviour
     public void SwitchToNewPlayer()
     {
         currentPlayer = Instantiate(playerPrefab, spawnPosition, Quaternion.identity);
+    }
+
+    public void StartWallGame()
+    {
+            Player player = currentPlayer.GetComponent<Player>();
+            player.ToggleControllable(false);
+            wallMinigame.SetActive(true);
     }
 }
