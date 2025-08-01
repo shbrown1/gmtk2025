@@ -5,12 +5,14 @@ public class Throw : MonoBehaviour, IInteractable
     public bool IsInUse;
     public GameObject Human;
     private Animator _animator;
+    private Player _player;
     private float _throwTimer = -1;
-    private float _throwTime;
+    private float _throwTime = 3;
 
     void Awake()
     {
         _animator = Human.GetComponent<Animator>();
+        _player = FindAnyObjectByType<Player>();
     }
 
     void Update()
@@ -22,6 +24,7 @@ public class Throw : MonoBehaviour, IInteractable
             if (_throwTimer > _throwTime)
             {
                 _throwTimer = -1f;
+                _player.Stand();
             }
         }
     }
@@ -38,6 +41,9 @@ public class Throw : MonoBehaviour, IInteractable
         else
         {
             _animator.SetTrigger("throw");
+            _throwTimer = 0f;
+            _player.transform.position = transform.position + (Vector3.back * 1);
+            _player.Throw();
         }
     }
 

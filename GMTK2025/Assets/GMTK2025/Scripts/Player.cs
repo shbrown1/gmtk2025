@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class Player : MonoBehaviour
@@ -9,7 +10,8 @@ public class Player : MonoBehaviour
     private bool isControllable;
     private new Rigidbody rigidbody;
     private Animator animator;
-    private Vector3 restartPosition = new Vector3(0, 2, 0); 
+    private Vector3 restartPosition = new Vector3(0, 2, 0);
+    private GameObject _currentRagdoll;
 
     private enum State
     {
@@ -171,5 +173,25 @@ public class Player : MonoBehaviour
     public void RestartLoop()
     {
         transform.position = restartPosition;
+    }
+
+    public void Throw()
+    {
+        isControllable = false;
+        gameObject.SetActive(false);
+        _currentRagdoll = Instantiate(Ragdoll, transform.position, Quaternion.identity);
+        _currentRagdoll.SetActive(true);
+        var firstChild = _currentRagdoll.GetComponentInChildren<Rigidbody>();
+        firstChild.AddForce(Vector3.up * 240f + Vector3.forward * 50f, ForceMode.Impulse);
+    }
+
+    public void Stand()
+    {
+        isControllable = true;
+        gameObject.SetActive(true);
+        var firstChild = _currentRagdoll.GetComponentInChildren<Rigidbody>();
+        transform.position = firstChild.transform.position + Vector3.up;
+        Destroy(_currentRagdoll);
+        _currentRagdoll = null;
     }
 }
