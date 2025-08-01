@@ -36,7 +36,6 @@ public class PlayerController : MonoBehaviour
         player.EndWallClimb();
         currentPlayer.transform.position += new Vector3(0, 1, 2);
         FindAnyObjectByType<CameraManager>().ChangeCameraMode(CameraManager.CameraMode.Following);
-        SwitchToNewPlayer(); //old guy will sit on the wall with a rope now?
     }
 
     void Update()
