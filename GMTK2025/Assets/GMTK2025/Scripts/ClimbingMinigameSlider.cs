@@ -55,22 +55,6 @@ public class ClimbingMinigameSlider : MonoBehaviour
         }
 
         CheckSuccessZone();
-        HandleInput();
-    }
-
-    void HandleInput()
-    {
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            if (inSuccessZone)
-            {
-                Debug.Log("Climb");
-            }
-            else
-            {
-                Debug.Log("Fall");
-            }
-        }
     }
 
     void CheckSuccessZone()
