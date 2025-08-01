@@ -1,12 +1,12 @@
+using System.Linq;
 using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 
 interface IInteractable
 {
     public void Interact();
     public string Prompt();
-    //give objects specific interact components
+    public bool IsUseable() => true; 
 }
 public class Interactor : MonoBehaviour
 {
@@ -65,7 +65,7 @@ public class Interactor : MonoBehaviour
 
         foreach (var col in colliders)
         {
-            if (col.TryGetComponent(out IInteractable interactable))
+            if (col.TryGetComponent(out IInteractable interactable) && interactable.IsUseable())
             {
                 float distance = Vector3.Distance(interactorSource.position, col.transform.position);
                 if (distance < closestDistance)

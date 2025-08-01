@@ -9,6 +9,7 @@ public class Player : MonoBehaviour
     private bool isControllable;
     private new Rigidbody rigidbody;
     private Animator animator;
+    private Vector3 restartPosition = new Vector3(0, 2, 0); 
 
     private enum State
     {
@@ -23,6 +24,7 @@ public class Player : MonoBehaviour
         animator = Model.GetComponentInChildren<Animator>();
         isControllable = true;
     }
+
     void Update()
     {
         if (isControllable)
@@ -75,11 +77,6 @@ public class Player : MonoBehaviour
     void FallFromWall(float distance)
     {
         transform.position -= new Vector3(0, distance, 0);
-    }
-
-    public bool IsCurrentPlayer()
-    {
-        return isControllable;
     }
 
     private void FixedUpdate()
@@ -153,5 +150,10 @@ public class Player : MonoBehaviour
     bool IsGrounded()
     {
         return Physics.Raycast(transform.position, Vector3.down, 1.1f) && CameraManager.instance.GetCameraMode() != CameraManager.CameraMode.LookingAtWall;
+    }
+
+    public void RestartLoop()
+    {
+        transform.position = restartPosition;
     }
 }
