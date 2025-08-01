@@ -66,6 +66,7 @@ public class Player : MonoBehaviour
     public void EndWallClimb()
     {
         animator.SetBool("isClimbing", false);
+        isControllable = true;
     }
 
     void ClimbWall(float distance)
