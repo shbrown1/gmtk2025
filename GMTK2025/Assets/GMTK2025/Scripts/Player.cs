@@ -145,6 +145,11 @@ public class Player : MonoBehaviour
         {
             transform.position = new Vector3(0, 19, 28);
         }
+
+        if(Input.GetKeyDown(KeyCode.L))
+        {
+            transform.position = new Vector3(-1.75f, -7.5f, 47);
+        }
     }
 
     bool IsGrounded()
