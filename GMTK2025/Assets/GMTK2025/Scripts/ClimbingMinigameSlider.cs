@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.Rendering;
 using UnityEngine.UI;
 
 public class ClimbingMinigameSlider : MonoBehaviour
@@ -7,10 +6,15 @@ public class ClimbingMinigameSlider : MonoBehaviour
     private float minHeight = 0.15f * Screen.height;
     private float maxHeight = Screen.height - (0.15f * Screen.height);
     [SerializeField] private float speed;
+
+    private float baseSuccessSizeModifier = 0.40f;
+    private float ropeSuccessSizeModifier = 0.35f;
+
     private float minSuccessHeight = 0.35f * Screen.height;
     private float maxSuccessHeight = Screen.height - (0.35f * Screen.height);
     public float climbDistance;
     public float fallDistance;
+    public bool pullingActivated = false;
 
     [SerializeField] private Image RedZone;
     [SerializeField] private Image GreenZone;
@@ -23,6 +27,8 @@ public class ClimbingMinigameSlider : MonoBehaviour
     private Direction direction;
     void Start()
     {
+        minSuccessHeight = baseSuccessSizeModifier * Screen.height;
+        maxSuccessHeight = Screen.height - (baseSuccessSizeModifier * Screen.height);
         direction = Random.Range(1, 3) % 2 == 0 ? Direction.down : Direction.up;
         SetGreenZoneHeight();
         SetRedZoneHeight();
@@ -96,5 +102,16 @@ public class ClimbingMinigameSlider : MonoBehaviour
         );
         redZoneRT.anchoredPosition = new Vector2(redZoneRT.anchoredPosition.x, localPoint.y);
         redZoneRT.sizeDelta = new Vector2(redZoneRT.sizeDelta.x, zoneHeight);
+    }
+
+    public void ToggleRopeEffects()
+    {
+        minSuccessHeight = ropeSuccessSizeModifier * Screen.height;
+        maxSuccessHeight = Screen.height - (ropeSuccessSizeModifier * Screen.height);
+    }
+
+    public void TogglePullingEffect()
+    {
+        pullingActivated = true;
     }
 }

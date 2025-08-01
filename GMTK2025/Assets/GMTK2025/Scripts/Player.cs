@@ -53,10 +53,9 @@ public class Player : MonoBehaviour
 
     void HandleWallGameMovement()
     {
+        ClimbingMinigameSlider climbingMinigame = FindAnyObjectByType<ClimbingMinigameSlider>();
         if (Input.GetKeyDown(KeyCode.E))
         {
-            ClimbingMinigameSlider climbingMinigame = FindAnyObjectByType<ClimbingMinigameSlider>();
-
             if (climbingMinigame.inSuccessZone)
             {
                 ClimbWall(climbingMinigame.climbDistance);
@@ -66,6 +65,13 @@ public class Player : MonoBehaviour
                 FallFromWall(climbingMinigame.fallDistance);
             }
         }
+
+        if (climbingMinigame.pullingActivated)
+        {
+            float pullSpeed = 1f;
+            transform.position += new Vector3(0, pullSpeed * Time.deltaTime, 0);
+        }
+
     }
 
     public void StartWallClimb()
