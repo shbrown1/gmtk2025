@@ -103,7 +103,7 @@ public class Player : MonoBehaviour
         {
             direction += Vector3.forward;
         }
-        
+
         if (Input.GetKey(KeyCode.S))
         {
             direction += Vector3.back;
@@ -113,7 +113,7 @@ public class Player : MonoBehaviour
         {
             direction += Vector3.right;
         }
-        
+
         if (Input.GetKey(KeyCode.A))
         {
             direction += Vector3.left;
@@ -136,12 +136,10 @@ public class Player : MonoBehaviour
             rigidbody.AddForce(Vector3.up * 5f + transform.forward * 5f, ForceMode.Impulse);
         }
 
-        /*
         if (Input.GetKeyDown(KeyCode.K))
         {
-            Die();
+            transform.position = new Vector3(0, 19, 28);
         }
-        */
     }
 
     bool IsGrounded()
