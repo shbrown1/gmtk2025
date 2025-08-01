@@ -24,7 +24,7 @@ public class PlayerController : MonoBehaviour
     {
         inWallGame = true;
         Player player = currentPlayer.GetComponent<Player>();
-        player.ToggleControllable(false);
+        player.StartWallClimb();
         wallMinigame.SetActive(true);
     }
 
@@ -33,6 +33,7 @@ public class PlayerController : MonoBehaviour
         inWallGame = false;
         Player player = currentPlayer.GetComponent<Player>();
         wallMinigame.SetActive(false);
+        player.EndWallClimb();
         currentPlayer.transform.position += new Vector3(0, 1, 2);
         FindAnyObjectByType<CameraManager>().ChangeCameraMode(CameraManager.CameraMode.Following);
         SwitchToNewPlayer(); //old guy will sit on the wall with a rope now?

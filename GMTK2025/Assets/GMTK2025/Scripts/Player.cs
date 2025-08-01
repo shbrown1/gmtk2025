@@ -54,19 +54,26 @@ public class Player : MonoBehaviour
         }
     }
 
+    public void StartWallClimb()
+    {
+        animator.SetBool("isClimbing", true);
+        isControllable = false;
+    }
+
+    public void EndWallClimb()
+    {
+        animator.SetBool("isClimbing", false);
+    }
+
     void ClimbWall(float distance)
     {
         transform.position += new Vector3(0, distance, 0);
+        animator.SetTrigger("climb");
     }
     //these could be the same function but seperating them since they'll probably use different animations
     void FallFromWall(float distance)
     {
         transform.position -= new Vector3(0, distance, 0);
-    }
-
-    public void ToggleControllable(bool on)
-    {
-        isControllable = on;
     }
 
     public bool IsCurrentPlayer()
