@@ -168,6 +168,11 @@ public class Player : MonoBehaviour
         {
             transform.LookAt(transform.position + direction);
             transform.Translate(Vector3.forward * speed * Time.deltaTime);
+            AudioManager.instance.StartFootSteps();
+        }
+        else
+        {
+            AudioManager.instance.StopFootSteps();
         }
 
         animator.SetFloat("Speed", direction.magnitude);
