@@ -20,6 +20,10 @@ public class Rope : MonoBehaviour, IInteractable
         player.RestartLoop();
         Human.SetActive(true);
         PlayerController.instance.wallMinigame.GetComponent<ClimbingMinigameSlider>().ToggleRopeEffects();
+
+        string[] sounds = { "interact1", "interact2" };
+        string sound = sounds[Random.Range(0, 2)];
+        AudioManager.instance.PlaySound(sound);
     }
 
     public string Prompt()

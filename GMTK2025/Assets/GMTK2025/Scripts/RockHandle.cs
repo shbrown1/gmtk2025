@@ -18,6 +18,10 @@ public class RockHandle : MonoBehaviour, IInteractable
         player.RestartLoop();
         Human.SetActive(true);
         Human.transform.SetParent(transform.parent.parent);
+
+        string[] sounds = { "interact1", "interact2" };
+        string sound = sounds[Random.Range(0, 2)];
+        AudioManager.instance.PlaySound(sound);
     }
 
     public string Prompt()

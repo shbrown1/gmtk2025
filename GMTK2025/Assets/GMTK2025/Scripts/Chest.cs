@@ -11,9 +11,11 @@ public class Chest : MonoBehaviour, IInteractable
     private float Timer;
     private float StartDelay = 0.2f;
     private bool IsRunning = false;
+    private bool successSoundPlayed;
 
     void Awake()
     {
+        successSoundPlayed = false;
         if (Treasure != null)
             Treasure.SetActive(false);
     }
@@ -29,6 +31,8 @@ public class Chest : MonoBehaviour, IInteractable
         animator.SetTrigger("useLever");
         animator.SetFloat("Speed", 0);
         IsRunning = true;
+
+        AudioManager.instance.PlaySound("chest");
     }
 
     void Update()
@@ -36,6 +40,7 @@ public class Chest : MonoBehaviour, IInteractable
         if (Treasure != null && Treasure.activeSelf)
         {
             Treasure.transform.Rotate(Vector3.up * 70 * Time.deltaTime, Space.World);
+            PlaySuccessSoundOnce();
         }
 
         if (IsRunning)
@@ -63,5 +68,14 @@ public class Chest : MonoBehaviour, IInteractable
     public bool IsUseable()
     {
         return !IsInUse;
+    }
+
+    private void PlaySuccessSoundOnce()
+    {
+        if (!successSoundPlayed)
+        {
+            AudioManager.instance.PlaySound("treasure");
+            successSoundPlayed = true;
+        }
     }
 }
