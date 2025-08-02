@@ -1,5 +1,3 @@
-using TMPro.Examples;
-using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -75,7 +73,11 @@ public class ClimbingMinigameSlider : MonoBehaviour
 
             if (slider.rectTransform.sizeDelta == baseSliderSize) isBig = false;
         }
-        elapsedTime = 0;
+        else
+        {
+            elapsedTime = 0;
+        }
+        
     }
 
     public void ProcessButtonPress()

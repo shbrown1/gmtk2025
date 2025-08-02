@@ -43,7 +43,7 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        if (inWallGame && currentPlayer.GetComponent<Player>().transform.position.y >= 18) //wall height
+        if (inWallGame && currentPlayer.GetComponent<Player>().transform.position.y >= 17) //wall height
         {
             ExitWallGame();
         }
