@@ -36,6 +36,7 @@ public class ClimbingMinigameSlider : MonoBehaviour
         SetGreenZoneHeight();
         baseSliderSize = slider.rectTransform.sizeDelta;
         bigSliderSize = slider.rectTransform.sizeDelta * new Vector2(1.3f, 1.3f);
+        gameObject.SetActive(false);
     }
 
     void Update()
@@ -45,7 +46,7 @@ public class ClimbingMinigameSlider : MonoBehaviour
         yPosition = Mathf.Clamp(yPosition, -RedZone.rectTransform.sizeDelta.y / 2f, RedZone.rectTransform.sizeDelta.y / 2f);
         slider.transform.localPosition = new Vector3(slider.transform.localPosition.x, yPosition, slider.transform.localPosition.z);
 
-        if(Mathf.Abs(slider.transform.localPosition.y) >= RedZone.rectTransform.sizeDelta.y / 2f)
+        if (Mathf.Abs(slider.transform.localPosition.y) >= RedZone.rectTransform.sizeDelta.y / 2f)
         {
             if(direction == Direction.up)
                 direction = Direction.down;
