@@ -3347,6 +3347,12 @@ MonoBehaviour:
     pitch: 1
     loops: 0
     source: {fileID: 0}
+  - name: LiftRock
+    clip: {fileID: 8300000, guid: 16ff4552c66e72a4dad86eed95eb1533, type: 3}
+    volume: 1
+    pitch: 1
+    loops: 0
+    source: {fileID: 0}
 --- !u!4 &5407258766256492421 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2232488614990212136, guid: 621d21749753e4047bec3ddaf31a4c91, type: 3}

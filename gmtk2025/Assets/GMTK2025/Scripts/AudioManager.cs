@@ -77,7 +77,7 @@ public class AudioManager : MonoBehaviour
             PlaySound(chosenSound);
 
             Sound stepSound = Array.Find(Sounds, s => s.name == chosenSound);
-            float waitTime = stepSound != null && stepSound.clip != null ? stepSound.clip.length : 0.4f;
+            float waitTime = stepSound.clip.length;
 
             yield return new WaitForSeconds(waitTime);
         
