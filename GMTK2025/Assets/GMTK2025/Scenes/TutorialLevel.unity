@@ -3741,6 +3741,30 @@ MonoBehaviour:
     pitch: 1
     loops: 0
     source: {fileID: 0}
+  - name: chest
+    clip: {fileID: 8300000, guid: 874ff7757920c9a4aa90d2d9a2cd3474, type: 3}
+    volume: 1
+    pitch: 1
+    loops: 0
+    source: {fileID: 0}
+  - name: treasure
+    clip: {fileID: 8300000, guid: ca42a894ca2abdb45bd40a78ff112308, type: 3}
+    volume: 1
+    pitch: 1
+    loops: 0
+    source: {fileID: 0}
+  - name: wallClimbSound
+    clip: {fileID: 8300000, guid: 5317cbdf703e60347b2ba1d930642a87, type: 3}
+    volume: 1
+    pitch: 1
+    loops: 0
+    source: {fileID: 0}
+  - name: fall
+    clip: {fileID: 8300000, guid: eb76629c2d8ced94cba7e463d16b98f9, type: 3}
+    volume: 1
+    pitch: 1
+    loops: 0
+    source: {fileID: 0}
 --- !u!4 &5407258766256492421 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2232488614990212136, guid: 621d21749753e4047bec3ddaf31a4c91, type: 3}
