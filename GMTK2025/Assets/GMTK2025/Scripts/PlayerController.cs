@@ -39,6 +39,7 @@ public class PlayerController : MonoBehaviour
         minigameUI.SetActive(false);
         player.EndWallClimb();
         FindAnyObjectByType<CameraManager>().ChangeCameraMode(CameraManager.CameraMode.Following);
+        wallMinigame.GetComponent<ClimbingMinigameSlider>().TurnOffArrows();
     }
 
     void Update()

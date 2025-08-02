@@ -43,7 +43,7 @@ public class ClimbingMinigameSlider : MonoBehaviour
         SetGreenZoneHeight();
         SetRedZoneHeight();
         baseSliderSize = slider.rectTransform.sizeDelta;
-        bigSliderSize = slider.rectTransform.sizeDelta * new Vector2(1.2f, 1.2f);
+        bigSliderSize = slider.rectTransform.sizeDelta * new Vector2(1.3f, 1.3f);
     }
     void Update()
     {
@@ -183,4 +183,11 @@ public class ClimbingMinigameSlider : MonoBehaviour
         arrow.color = endColor;
         arrow.gameObject.SetActive(false);
     }
+
+    public void TurnOffArrows()
+    {
+        upArrow.gameObject.SetActive(false);
+        downArrow.gameObject.SetActive(false);
+    }
+
 }
