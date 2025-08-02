@@ -10,7 +10,6 @@ public class Rope : MonoBehaviour, IInteractable
     void Awake()
     {
         _animator = Human.GetComponent<Animator>();
-        Interact();
     }
 
     public void Interact()

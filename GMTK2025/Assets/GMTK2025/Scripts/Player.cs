@@ -81,8 +81,15 @@ public class Player : MonoBehaviour
 
     public void StartWallClimb()
     {
+        transform.position = new Vector3(-1, 1, 20);
+        transform.rotation = Quaternion.Euler(0, 0, 0);
         animator.SetFloat("Speed", 0);
         animator.SetBool("isClimbing", true);
+        var rope = FindAnyObjectByType<Rope>();
+        if (rope.IsInUse)
+        {
+            animator.SetBool("hasRope", true);
+        }
         isControllable = false;
     }
 
