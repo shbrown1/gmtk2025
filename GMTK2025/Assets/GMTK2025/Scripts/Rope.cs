@@ -16,8 +16,10 @@ public class Rope : MonoBehaviour, IInteractable
     {
         IsInUse = true;
         RopeModel.SetActive(false);
-        Invoke("CallRestartLoop", 0.5f);
         Human.SetActive(true);
+        var player = FindAnyObjectByType<Player>();
+        player.Model.SetActive(false);
+        Invoke("CallRestartLoop", 1f);
         PlayerController.instance.wallMinigame.GetComponent<ClimbingMinigameSlider>().ToggleRopeEffects();
 
         string[] sounds = { "interact1", "interact2" };
@@ -29,6 +31,8 @@ public class Rope : MonoBehaviour, IInteractable
     {
         var player = FindAnyObjectByType<Player>();
         player.RestartLoop();
+        player.Model.SetActive(true);
+
     }
 
 
