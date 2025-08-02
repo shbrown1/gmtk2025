@@ -14,19 +14,14 @@ public class RockHandle : MonoBehaviour, IInteractable
     public void Interact()
     {
         IsInUse = true;
-        Invoke("CallRestartLoop", 0.5f);
+        var player = FindAnyObjectByType<Player>();
+        player.RestartLoop();
         Human.SetActive(true);
         Human.transform.SetParent(transform.parent.parent);
 
         string[] sounds = { "interact1", "interact2" };
         string sound = sounds[Random.Range(0, 2)];
         AudioManager.instance.PlaySound(sound);
-    }
-
-    void CallRestartLoop()
-    {
-        var player = FindAnyObjectByType<Player>();
-        player.RestartLoop();
     }
 
     public string Prompt()
