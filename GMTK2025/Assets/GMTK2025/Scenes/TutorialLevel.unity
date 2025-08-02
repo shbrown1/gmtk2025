@@ -1301,7 +1301,7 @@ MonoBehaviour:
   downArrow: {fileID: 59098806}
   sizeDownTime: 0.2
   arrowMoveDistance: 100
-  arrowFadeDuration: 2
+  arrowFadeDuration: 1.5
   inSuccessZone: 0
 --- !u!114 &861267059
 MonoBehaviour:
