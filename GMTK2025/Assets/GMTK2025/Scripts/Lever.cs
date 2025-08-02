@@ -21,6 +21,8 @@ public class Lever : MonoBehaviour, IInteractable
         var animator = player.Model.GetComponentInChildren<Animator>();
         animator.SetTrigger("useLever");
         IsRunning = true;
+
+        AudioManager.instance.PlaySound("lever");
     }
 
     void Update()

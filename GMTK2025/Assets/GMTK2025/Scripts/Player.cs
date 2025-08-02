@@ -112,11 +112,13 @@ public class Player : MonoBehaviour
     {
         transform.position += new Vector3(0, distance, 0);
         animator.SetTrigger("climb");
+        AudioManager.instance.PlaySound("wallClimbSound");
     }
     //these could be the same function but seperating them since they'll probably use different animations
     void FallFromWall(float distance)
     {
         if (transform.position.y >= 1) transform.position -= new Vector3(0, distance, 0);
+        AudioManager.instance.PlaySound("fall");
     }
 
     private void FixedUpdate()

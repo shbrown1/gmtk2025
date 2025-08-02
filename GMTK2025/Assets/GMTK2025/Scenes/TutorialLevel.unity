@@ -3620,6 +3620,18 @@ MonoBehaviour:
     pitch: 1
     loops: 0
     source: {fileID: 0}
+  - name: interact1
+    clip: {fileID: 8300000, guid: 39bbda11c5fa3f44096819c0515c9ec5, type: 3}
+    volume: 1
+    pitch: 1
+    loops: 0
+    source: {fileID: 0}
+  - name: interact2
+    clip: {fileID: 8300000, guid: afa4443cd3bd8444bab009fff01f61df, type: 3}
+    volume: 1
+    pitch: 1
+    loops: 0
+    source: {fileID: 0}
 --- !u!4 &5407258766256492421 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2232488614990212136, guid: 621d21749753e4047bec3ddaf31a4c91, type: 3}

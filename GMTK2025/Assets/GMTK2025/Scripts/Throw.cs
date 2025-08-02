@@ -45,6 +45,10 @@ public class Throw : MonoBehaviour, IInteractable
             _player.transform.position = transform.position + (Vector3.back * 1);
             _player.Throw();
         }
+        
+        string[] sounds = { "interact1", "interact2" };
+        string sound = sounds[Random.Range(0, 2)];
+        AudioManager.instance.PlaySound(sound);
     }
 
     public string Prompt()
