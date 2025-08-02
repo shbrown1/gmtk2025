@@ -4,11 +4,10 @@ using UnityEngine.UI;
 
 public class ClimbingMinigameSlider : MonoBehaviour
 {
-    private float minHeight = 150f;
-    private float maxHeight = 750f;
     [SerializeField] private float speed;
-    private float minSuccessHeight = 350f;
-    private float maxSuccessHeight = 550f;
+    [SerializeField] private Color SuccessColor;
+    [SerializeField] private Color FailureColor;
+    public float successZoneHeight = 100;
     public float climbDistance;
     public float fallDistance;
     public bool pullingActivated = false;
@@ -35,28 +34,23 @@ public class ClimbingMinigameSlider : MonoBehaviour
     {
         direction = UnityEngine.Random.Range(1, 3) % 2 == 0 ? Direction.down : Direction.up;
         SetGreenZoneHeight();
-        SetRedZoneHeight();
         baseSliderSize = slider.rectTransform.sizeDelta;
         bigSliderSize = slider.rectTransform.sizeDelta * new Vector2(1.3f, 1.3f);
     }
+
     void Update()
     {
-        if (direction == Direction.up)
-        {
-            transform.position += new Vector3(0, speed * Time.deltaTime, 0);
-        }
-        else
-        {
-            transform.position -= new Vector3(0, speed * Time.deltaTime, 0);
-        }
+        var currentSpeed = speed * (direction == Direction.down ? -1 : 1);
+        var yPosition = transform.localPosition.y + Time.deltaTime * currentSpeed;
+        yPosition = Mathf.Clamp(yPosition, -RedZone.rectTransform.sizeDelta.y / 2f, RedZone.rectTransform.sizeDelta.y / 2f);
+        transform.localPosition = new Vector3(transform.localPosition.x, yPosition, transform.localPosition.z);
 
-        if (transform.position.y >= maxHeight)
+        if(Mathf.Abs(transform.localPosition.y) >= RedZone.rectTransform.sizeDelta.y / 2f)
         {
-            direction = Direction.down;
-        }
-        else if (transform.position.y <= minHeight)
-        {
-            direction = Direction.up;
+            if(direction == Direction.up)
+                direction = Direction.down;
+            else 
+                direction = Direction.up;
         }
 
         CheckSuccessZone();
@@ -76,15 +70,15 @@ public class ClimbingMinigameSlider : MonoBehaviour
         {
             elapsedTime = 0;
         }
-
     }
 
     public void ProcessButtonPress()
     {
+        isBig = true;
+        slider.rectTransform.sizeDelta = bigSliderSize;
+
         if (inSuccessZone)
         {
-            isBig = true;
-            slider.rectTransform.sizeDelta = bigSliderSize;
             StartCoroutine(AnimateArrow(upArrow, Vector2.up));
         }
         else
@@ -95,56 +89,28 @@ public class ClimbingMinigameSlider : MonoBehaviour
 
     void CheckSuccessZone()
     {
-        RectTransform sliderRT = slider.GetComponent<RectTransform>();
-        //TODO: this check should feel better
-        float spriteHeight = sliderRT.rect.height;
-        float bottomY = transform.position.y - spriteHeight / 2f;
-        float topY = transform.position.y + spriteHeight / 2f;
-        inSuccessZone = topY >= minSuccessHeight && bottomY <= maxSuccessHeight;
+        var image = GetComponent<Image>();
+        if (Mathf.Abs(transform.localPosition.y) - slider.rectTransform.sizeDelta.y / 2f <= successZoneHeight / 2f)
+        {
+            inSuccessZone = true;
+            image.color = SuccessColor;
+        }
+        else
+        {
+            inSuccessZone = false;
+            image.color = FailureColor;
+        }
     }
 
     private void SetGreenZoneHeight()
     {
         RectTransform greenZoneRT = GreenZone.GetComponent<RectTransform>();
-        RectTransform canvasRT = GreenZone.canvas.GetComponent<RectTransform>();
-
-        float zoneHeight = maxSuccessHeight - minSuccessHeight;
-        float zoneMidY = (maxSuccessHeight + minSuccessHeight) / 2f;
-
-        Vector2 localPoint;
-        RectTransformUtility.ScreenPointToLocalPointInRectangle(
-        canvasRT,
-            new Vector2(Screen.width / 2f, zoneMidY),
-            null,
-            out localPoint
-        );
-        greenZoneRT.anchoredPosition = new Vector2(greenZoneRT.anchoredPosition.x, localPoint.y);
-        greenZoneRT.sizeDelta = new Vector2(greenZoneRT.sizeDelta.x, zoneHeight);
-    }
-
-    private void SetRedZoneHeight()
-    {
-        RectTransform redZoneRT = RedZone.GetComponent<RectTransform>();
-        RectTransform canvasRT = RedZone.canvas.GetComponent<RectTransform>();
-
-        float zoneHeight = maxHeight - minHeight;
-        float zoneMidY = (maxHeight + minHeight) / 2f;
-
-        Vector2 localPoint;
-        RectTransformUtility.ScreenPointToLocalPointInRectangle(
-        canvasRT,
-            new Vector2(Screen.width / 2f, zoneMidY),
-            null,
-            out localPoint
-        );
-        redZoneRT.anchoredPosition = new Vector2(redZoneRT.anchoredPosition.x, localPoint.y);
-        redZoneRT.sizeDelta = new Vector2(redZoneRT.sizeDelta.x, zoneHeight);
+        greenZoneRT.sizeDelta = new Vector2(greenZoneRT.sizeDelta.x, successZoneHeight);
     }
 
     public void ToggleRopeEffects()
     {
-        minSuccessHeight = 300f;
-        maxSuccessHeight = 600f;
+        successZoneHeight = 300;
         SetGreenZoneHeight();
     }
 
@@ -184,5 +150,4 @@ public class ClimbingMinigameSlider : MonoBehaviour
         upArrow.gameObject.SetActive(false);
         downArrow.gameObject.SetActive(false);
     }
-
 }

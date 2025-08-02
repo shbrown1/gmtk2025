@@ -12,7 +12,7 @@ public class Player : MonoBehaviour
     private Animator animator;
     private Vector3 restartPosition = new Vector3(0, 2, 0);
     private GameObject _currentRagdoll;
-    private float wallClimbPressCooldown = 0.5f;
+    private float wallClimbPressCooldown = 0.2f;
     private float nextPressTime = 0f;
 
     private enum State
