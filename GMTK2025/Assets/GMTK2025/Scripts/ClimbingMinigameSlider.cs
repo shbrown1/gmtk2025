@@ -1,3 +1,5 @@
+using TMPro.Examples;
+using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -19,8 +21,13 @@ public class ClimbingMinigameSlider : MonoBehaviour
     [SerializeField] private Image RedZone;
     [SerializeField] private Image GreenZone;
     [SerializeField] private Image slider;
+    [SerializeField] private float sizeDownTime;
 
+    private Vector2 baseSliderSize;
+    private Vector2 bigSliderSize;
+    private float elapsedTime = 0f;
     public bool inSuccessZone;
+    private bool isBig = false;
 
 
     private enum Direction { up, down };
@@ -29,9 +36,11 @@ public class ClimbingMinigameSlider : MonoBehaviour
     {
         minSuccessHeight = baseSuccessSizeModifier * Screen.height;
         maxSuccessHeight = Screen.height - (baseSuccessSizeModifier * Screen.height);
-        direction = Random.Range(1, 3) % 2 == 0 ? Direction.down : Direction.up;
+        direction = UnityEngine.Random.Range(1, 3) % 2 == 0 ? Direction.down : Direction.up;
         SetGreenZoneHeight();
         SetRedZoneHeight();
+        baseSliderSize = slider.rectTransform.sizeDelta;
+        bigSliderSize = slider.rectTransform.sizeDelta * new Vector2(1.2f, 1.2f);
     }
     void Update()
     {
@@ -54,6 +63,32 @@ public class ClimbingMinigameSlider : MonoBehaviour
         }
 
         CheckSuccessZone();
+
+        if (isBig)
+        {
+            if (elapsedTime < sizeDownTime)
+            {
+                elapsedTime += Time.deltaTime;
+                float t = Mathf.Clamp01(elapsedTime / sizeDownTime);
+                slider.rectTransform.sizeDelta = Vector2.Lerp(bigSliderSize, baseSliderSize, t);
+            }
+
+            if (slider.rectTransform.sizeDelta == baseSliderSize) isBig = false;
+        }
+        elapsedTime = 0;
+    }
+
+    public void ProcessButtonPress()
+    {
+        if (inSuccessZone)
+        {
+            isBig = true;
+            slider.rectTransform.sizeDelta = bigSliderSize;
+        }
+        else
+        {
+
+        }
     }
 
     void CheckSuccessZone()

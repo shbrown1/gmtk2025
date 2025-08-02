@@ -1216,9 +1216,11 @@ MonoBehaviour:
   speed: 300
   climbDistance: 1
   fallDistance: 0.5
+  pullingActivated: 0
   RedZone: {fileID: 827918863}
   GreenZone: {fileID: 95504987}
   slider: {fileID: 861267059}
+  sizeDownTime: 0.2
   inSuccessZone: 0
 --- !u!114 &861267059
 MonoBehaviour:
@@ -1625,80 +1627,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11266e06fa5cc8340b6bdf28d33785f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1001 &1164781769
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 1559205059}
-    m_Modifications:
-    - target: {fileID: -8679921383154817045, guid: 88baebe66e5e46642b9190620ab031f2, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 873
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 88baebe66e5e46642b9190620ab031f2, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1787.7
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 88baebe66e5e46642b9190620ab031f2, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -4.08
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 88baebe66e5e46642b9190620ab031f2, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -7.25
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 88baebe66e5e46642b9190620ab031f2, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 29.53
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 88baebe66e5e46642b9190620ab031f2, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.7071067
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 88baebe66e5e46642b9190620ab031f2, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 88baebe66e5e46642b9190620ab031f2, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 88baebe66e5e46642b9190620ab031f2, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 88baebe66e5e46642b9190620ab031f2, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 88baebe66e5e46642b9190620ab031f2, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 88baebe66e5e46642b9190620ab031f2, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -7511558181221131132, guid: 88baebe66e5e46642b9190620ab031f2, type: 3}
-      propertyPath: 'm_Materials.Array.data[0]'
-      value: 
-      objectReference: {fileID: 2100000, guid: 796e48607ab99914a93a0612fcd5ae5f, type: 2}
-    - target: {fileID: 919132149155446097, guid: 88baebe66e5e46642b9190620ab031f2, type: 3}
-      propertyPath: m_Name
-      value: snowFloor1 (1)
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 88baebe66e5e46642b9190620ab031f2, type: 3}
---- !u!4 &1164781770 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 88baebe66e5e46642b9190620ab031f2, type: 3}
-  m_PrefabInstance: {fileID: 1164781769}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1321818027
 GameObject:
   m_ObjectHideFlags: 0
@@ -2086,10 +2014,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: -7511558181221131132, guid: c99e06224f9f3094c99bef80bc7d966b, type: 3}
-      propertyPath: 'm_Materials.Array.data[0]'
-      value: 
-      objectReference: {fileID: 2100000, guid: 8c4f49483bf6bb0489b7ab00a35dc6fc, type: 2}
     - target: {fileID: 919132149155446097, guid: c99e06224f9f3094c99bef80bc7d966b, type: 3}
       propertyPath: m_Name
       value: stairs
@@ -2238,7 +2162,6 @@ Transform:
   m_Children:
   - {fileID: 1041276916}
   - {fileID: 259677136}
-  - {fileID: 1164781770}
   - {fileID: 205393439}
   - {fileID: 1438025618}
   m_Father: {fileID: 0}
