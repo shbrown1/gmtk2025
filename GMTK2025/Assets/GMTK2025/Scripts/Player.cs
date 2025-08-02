@@ -12,6 +12,8 @@ public class Player : MonoBehaviour
     private Animator animator;
     private Vector3 restartPosition = new Vector3(0, 2, 0);
     private GameObject _currentRagdoll;
+    private float wallClimbPressCooldown = 0.5f;
+    private float nextPressTime = 0f;
 
     private enum State
     {
@@ -54,7 +56,7 @@ public class Player : MonoBehaviour
     void HandleWallGameMovement()
     {
         ClimbingMinigameSlider climbingMinigame = FindAnyObjectByType<ClimbingMinigameSlider>();
-        if (Input.GetKeyDown(KeyCode.E))
+        if (Input.GetKeyDown(KeyCode.E) && Time.time >= nextPressTime)
         {
             if (climbingMinigame.inSuccessZone)
             {
@@ -66,6 +68,7 @@ public class Player : MonoBehaviour
             }
 
             climbingMinigame.ProcessButtonPress();
+            nextPressTime = Time.time + wallClimbPressCooldown;
         }
 
         if (climbingMinigame.pullingActivated)
