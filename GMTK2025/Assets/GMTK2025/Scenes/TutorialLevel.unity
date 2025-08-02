@@ -2153,6 +2153,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: b60720e6356885a4bb36c169332dd68c, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 2aa042a66eae1e84ba4f775f58d6574e, type: 2}
     - target: {fileID: 919132149155446097, guid: b60720e6356885a4bb36c169332dd68c, type: 3}
       propertyPath: m_Name
       value: finalRoomInner
@@ -2726,6 +2730,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 02c137f8bc6ad7d48bed69acf643b0d3, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: ed96ff24a6b17d04baeb11af406391e1, type: 2}
     - target: {fileID: 919132149155446097, guid: 02c137f8bc6ad7d48bed69acf643b0d3, type: 3}
       propertyPath: m_Name
       value: finalRoomOuter
