@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Chest : MonoBehaviour, IInteractable
 {
@@ -56,8 +57,14 @@ public class Chest : MonoBehaviour, IInteractable
                 var animator = player.Model.GetComponentInChildren<Animator>();
                 animator.SetTrigger("openChest");
                 Treasure.SetActive(true);
+                Invoke("BackToHomeScreen", 5f);
             }
         }
+    }
+
+    void BackToHomeScreen()
+    {
+        SceneManager.LoadScene("TitleScreen");
     }
 
     public string Prompt()
