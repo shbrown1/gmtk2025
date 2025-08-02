@@ -41,11 +41,11 @@ public class ClimbingMinigameSlider : MonoBehaviour
     void Update()
     {
         var currentSpeed = speed * (direction == Direction.down ? -1 : 1);
-        var yPosition = transform.localPosition.y + Time.deltaTime * currentSpeed;
+        var yPosition = slider.transform.localPosition.y + Time.deltaTime * currentSpeed;
         yPosition = Mathf.Clamp(yPosition, -RedZone.rectTransform.sizeDelta.y / 2f, RedZone.rectTransform.sizeDelta.y / 2f);
-        transform.localPosition = new Vector3(transform.localPosition.x, yPosition, transform.localPosition.z);
+        slider.transform.localPosition = new Vector3(slider.transform.localPosition.x, yPosition, slider.transform.localPosition.z);
 
-        if(Mathf.Abs(transform.localPosition.y) >= RedZone.rectTransform.sizeDelta.y / 2f)
+        if(Mathf.Abs(slider.transform.localPosition.y) >= RedZone.rectTransform.sizeDelta.y / 2f)
         {
             if(direction == Direction.up)
                 direction = Direction.down;
@@ -89,8 +89,8 @@ public class ClimbingMinigameSlider : MonoBehaviour
 
     void CheckSuccessZone()
     {
-        var image = GetComponent<Image>();
-        if (Mathf.Abs(transform.localPosition.y) - slider.rectTransform.sizeDelta.y / 2f <= successZoneHeight / 2f)
+        var image = slider.GetComponent<Image>();
+        if (Mathf.Abs(slider.transform.localPosition.y) - slider.rectTransform.sizeDelta.y / 2f <= successZoneHeight / 2f)
         {
             inSuccessZone = true;
             image.color = SuccessColor;

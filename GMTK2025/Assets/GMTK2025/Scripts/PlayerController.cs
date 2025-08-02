@@ -7,7 +7,6 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private GameObject playerPrefab;
     [SerializeField] private Vector3 spawnPosition;
     public GameObject wallMinigame;
-    [SerializeField] private GameObject minigameUI;
     private bool inWallGame;
 
     void Awake()
@@ -27,7 +26,6 @@ public class PlayerController : MonoBehaviour
         Player player = currentPlayer.GetComponent<Player>();
         player.StartWallClimb();
         wallMinigame.SetActive(true);
-        minigameUI.SetActive(true);
     }
 
     void ExitWallGame()
@@ -36,7 +34,6 @@ public class PlayerController : MonoBehaviour
         currentPlayer.transform.position += new Vector3(0, 1, 4);
         Player player = currentPlayer.GetComponent<Player>();
         wallMinigame.SetActive(false);
-        minigameUI.SetActive(false);
         player.EndWallClimb();
         FindAnyObjectByType<CameraManager>().ChangeCameraMode(CameraManager.CameraMode.Following);
         wallMinigame.GetComponent<ClimbingMinigameSlider>().TurnOffArrows();
