@@ -42,7 +42,7 @@ public class Lever : MonoBehaviour, IInteractable
 
     public string Prompt()
     {
-        return "Press E to Help Lift";
+        return "Press E to Use Lever";
     }
 
     public bool IsUseable()
