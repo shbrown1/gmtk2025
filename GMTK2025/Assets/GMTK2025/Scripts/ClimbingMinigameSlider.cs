@@ -151,6 +151,7 @@ public class ClimbingMinigameSlider : MonoBehaviour
     {
         minSuccessHeight = ropeSuccessSizeModifier * Screen.height;
         maxSuccessHeight = Screen.height - (ropeSuccessSizeModifier * Screen.height);
+        SetGreenZoneHeight();
     }
 
     public void TogglePullingEffect()

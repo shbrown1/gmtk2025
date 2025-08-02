@@ -19,6 +19,7 @@ public class Rope : MonoBehaviour, IInteractable
         var player = FindAnyObjectByType<Player>();
         player.RestartLoop();
         Human.SetActive(true);
+        PlayerController.instance.wallMinigame.GetComponent<ClimbingMinigameSlider>().ToggleRopeEffects();
     }
 
     public string Prompt()

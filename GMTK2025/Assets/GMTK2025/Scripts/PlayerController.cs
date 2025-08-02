@@ -6,7 +6,7 @@ public class PlayerController : MonoBehaviour
     public GameObject currentPlayer;
     [SerializeField] private GameObject playerPrefab;
     [SerializeField] private Vector3 spawnPosition;
-    [SerializeField] private GameObject wallMinigame;
+    public GameObject wallMinigame;
     [SerializeField] private GameObject minigameUI;
     private bool inWallGame;
 
