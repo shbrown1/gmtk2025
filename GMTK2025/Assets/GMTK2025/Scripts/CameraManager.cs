@@ -7,8 +7,10 @@ public class CameraManager : MonoBehaviour
     private Vector3 _playerCameraRotation = new Vector3(60, 0, 0);
     private Vector3 _wallPosition = new Vector3(0, 14, 2.5f);
     private Vector3 _wallRotation = new Vector3(13, -3, 0);
-    private Vector3 _stairPosition = new Vector3(-3, 14, 55f);
-    private Vector3 _stairRotation = new Vector3(35, 0, 0);
+    private Vector3 _stairPosition = new Vector3(-3, 15, 50f);
+    private Vector3 _stairRotation = new Vector3(28, 0, 0);
+    private Vector3 _treasurePosition = new Vector3(-3, 15, 72);
+    private Vector3 _treasureRotation = new Vector3(28, 0, 0);
     private Camera _camera;
     private Player _player;
     public static CameraManager instance;
@@ -18,6 +20,7 @@ public class CameraManager : MonoBehaviour
         Following,
         LookingAtWall,
         LookingAtStairs,
+        LookingAtTreasure,
     }
     CameraMode currentMode = CameraMode.Following;
 
@@ -54,6 +57,11 @@ public class CameraManager : MonoBehaviour
         {
             desiredPosition = _stairPosition;
             desiredRotation = Quaternion.Euler(_stairRotation);
+        }
+        else if (currentMode == CameraMode.LookingAtTreasure)
+        {
+            desiredPosition = _treasurePosition;
+            desiredRotation = Quaternion.Euler(_treasureRotation);
         }
 
         float cameraMoveSpeed = 2.5f;

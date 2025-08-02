@@ -7,7 +7,7 @@ public class Player : MonoBehaviour
     public GameObject Ragdoll;
 
     private float speed = 5f;
-    private bool isControllable;
+    public bool isControllable;
     private new Rigidbody rigidbody;
     private Animator animator;
     private Vector3 restartPosition = new Vector3(0, 2, 0);
@@ -37,11 +37,20 @@ public class Player : MonoBehaviour
             HandleUserMovement();
         }
 
-        if(CameraManager.instance.GetCameraMode() == CameraManager.CameraMode.Following && transform.position.z > 63)
+        var lever = FindAnyObjectByType<Lever>();
+        if (CameraManager.instance.GetCameraMode() == CameraManager.CameraMode.LookingAtStairs && transform.position.z > 77.3f && lever.IsInUse)
+        {
+            CameraManager.instance.ChangeCameraMode(CameraManager.CameraMode.LookingAtTreasure);
+        }
+        else if(CameraManager.instance.GetCameraMode() == CameraManager.CameraMode.LookingAtTreasure && transform.position.z < 77.3f && lever.IsInUse)
         {
             CameraManager.instance.ChangeCameraMode(CameraManager.CameraMode.LookingAtStairs);
         }
-        else if(CameraManager.instance.GetCameraMode() == CameraManager.CameraMode.LookingAtStairs && transform.position.z < 63)
+        else if (CameraManager.instance.GetCameraMode() == CameraManager.CameraMode.Following && transform.position.z > 63)
+        {
+            CameraManager.instance.ChangeCameraMode(CameraManager.CameraMode.LookingAtStairs);
+        }
+        else if (CameraManager.instance.GetCameraMode() == CameraManager.CameraMode.LookingAtStairs && transform.position.z < 63)
         {
             CameraManager.instance.ChangeCameraMode(CameraManager.CameraMode.Following);
         }
@@ -180,6 +189,11 @@ public class Player : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.L))
         {
             transform.position = new Vector3(-1.75f, -7.5f, 47);
+        }
+
+        if (Input.GetKeyDown(KeyCode.M))
+        {
+            transform.position = new Vector3(-5, 10, 79);
         }
     }
 
