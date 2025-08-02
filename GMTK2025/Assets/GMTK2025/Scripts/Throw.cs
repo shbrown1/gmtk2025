@@ -28,6 +28,13 @@ public class Throw : MonoBehaviour, IInteractable
             }
         }
     }
+    
+    void CallRestartLoop()
+    {
+        var player = FindAnyObjectByType<Player>();
+        player.RestartLoop();
+    }
+
 
     public void Interact()
     {
@@ -35,8 +42,7 @@ public class Throw : MonoBehaviour, IInteractable
         {
             IsInUse = true;
             Human.SetActive(true);
-            var player = FindAnyObjectByType<Player>();
-            player.RestartLoop();
+            Invoke("CallRestartLoop", 0.5f);
         }
         else
         {
@@ -45,7 +51,7 @@ public class Throw : MonoBehaviour, IInteractable
             _player.transform.position = transform.position + (Vector3.back * 1);
             _player.Throw();
         }
-        
+
         string[] sounds = { "interact1", "interact2" };
         string sound = sounds[Random.Range(0, 2)];
         AudioManager.instance.PlaySound(sound);
