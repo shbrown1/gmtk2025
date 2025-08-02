@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -19,7 +20,11 @@ public class ClimbingMinigameSlider : MonoBehaviour
     [SerializeField] private Image RedZone;
     [SerializeField] private Image GreenZone;
     [SerializeField] private Image slider;
+    [SerializeField] private Image upArrow;
+    [SerializeField] private Image downArrow;
     [SerializeField] private float sizeDownTime;
+    [SerializeField] private float arrowMoveDistance;
+    [SerializeField] private float arrowFadeDuration;
 
     private Vector2 baseSliderSize;
     private Vector2 bigSliderSize;
@@ -77,7 +82,7 @@ public class ClimbingMinigameSlider : MonoBehaviour
         {
             elapsedTime = 0;
         }
-        
+
     }
 
     public void ProcessButtonPress()
@@ -86,10 +91,11 @@ public class ClimbingMinigameSlider : MonoBehaviour
         {
             isBig = true;
             slider.rectTransform.sizeDelta = bigSliderSize;
+            StartCoroutine(AnimateArrow(upArrow, Vector2.up));
         }
         else
         {
-
+            StartCoroutine(AnimateArrow(downArrow, Vector2.down));
         }
     }
 
@@ -150,5 +156,31 @@ public class ClimbingMinigameSlider : MonoBehaviour
     public void TogglePullingEffect()
     {
         pullingActivated = true;
+    }
+
+    private IEnumerator AnimateArrow(Image arrow, Vector2 direction)
+    {
+        arrow.gameObject.SetActive(true);
+
+        RectTransform arrowRT = arrow.rectTransform;
+        Vector2 startPos = slider.transform.position;
+        Vector2 endPos = startPos + direction * arrowMoveDistance;
+
+        Color startColor = new Color(arrow.color.r, arrow.color.g, arrow.color.b, 1f); //fading by changing color alpha
+        Color endColor = new Color(startColor.r, startColor.g, startColor.b, 0);
+
+        float elapsedTime = 0f;
+        while (elapsedTime < arrowFadeDuration)
+        {
+            float t = elapsedTime / arrowFadeDuration;
+            arrowRT.position = Vector2.Lerp(startPos, endPos, t);
+            arrow.color = Color.Lerp(startColor, endColor, t);
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+
+        arrowRT.position = endPos;
+        arrow.color = endColor;
+        arrow.gameObject.SetActive(false);
     }
 }
