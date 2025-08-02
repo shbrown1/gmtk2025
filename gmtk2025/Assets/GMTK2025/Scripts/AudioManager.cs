@@ -1,10 +1,13 @@
 using System;
+using System.Collections;
 using UnityEngine;
 
 public class AudioManager : MonoBehaviour
 {
     public Sound[] Sounds;
     public static AudioManager instance;
+    private bool isWalking;
+    private Coroutine footStepCoroutine;
 
     void Awake()
     {
@@ -26,12 +29,58 @@ public class AudioManager : MonoBehaviour
 
     public void PlaySound(string name)
     {
-        Sound sound = Array.Find(Sounds, sound => sound.name == name);
+        Sound sound = Array.Find(Sounds, s => s.name == name);
         if (sound == null)
         {
             Debug.LogWarning("Sound not found: " + name);
             return;
         }
-        sound.source.Play();
+        if (!IsPlaying(name)) sound.source.Play();
+    }
+
+    private bool IsPlaying(string name)
+    {
+        Sound sound = Array.Find(Sounds, s => s.name == name);
+        if (sound == null) return false;
+        return sound.source.isPlaying;
+    }
+
+    public void StartFootSteps()
+    {
+        if (!isWalking)
+        {
+            isWalking = true;
+            footStepCoroutine = StartCoroutine(FootStepLoop());
+        }
+    }
+
+    public void StopFootSteps()
+    {
+        if (isWalking)
+        {
+            isWalking = false;
+            if (footStepCoroutine != null)
+            {
+                StopCoroutine(footStepCoroutine);
+            }
+
+        }
+    }
+
+    private IEnumerator FootStepLoop()
+    {
+        string[] footsteps = { "FootStep1", "FootStep2", "FootStep3" };
+
+        while (isWalking)
+        {
+            string chosenSound = footsteps[UnityEngine.Random.Range(0, 3)];
+            PlaySound(chosenSound);
+
+            Sound stepSound = Array.Find(Sounds, s => s.name == chosenSound);
+            float waitTime = stepSound != null && stepSound.clip != null ? stepSound.clip.length : 0.4f;
+
+            yield return new WaitForSeconds(waitTime);
+        
+        }
     }
 }

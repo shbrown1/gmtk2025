@@ -1944,6 +1944,7 @@ Transform:
   m_Children:
   - {fileID: 495662467}
   - {fileID: 773588038}
+  - {fileID: 1971495274}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1041276910
@@ -3327,6 +3328,24 @@ MonoBehaviour:
     volume: 0.51
     pitch: 0.9
     loops: 1
+    source: {fileID: 0}
+  - name: FootStep1
+    clip: {fileID: 8300000, guid: a6f6734aedad506479fc9776c4a54803, type: 3}
+    volume: 0.51
+    pitch: 1
+    loops: 0
+    source: {fileID: 0}
+  - name: FootStep2
+    clip: {fileID: 8300000, guid: cb23df982eaa2d94b9182cf9179b7265, type: 3}
+    volume: 1
+    pitch: 1
+    loops: 0
+    source: {fileID: 0}
+  - name: FootStep3
+    clip: {fileID: 8300000, guid: bd6ee5e5392c8ef449600eeeb7cc9555, type: 3}
+    volume: 1
+    pitch: 1
+    loops: 0
     source: {fileID: 0}
 --- !u!4 &5407258766256492421 stripped
 Transform:
