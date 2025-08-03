@@ -32,7 +32,6 @@ public class Rope : MonoBehaviour, IInteractable
         var player = FindAnyObjectByType<Player>();
         player.RestartLoop();
         player.Model.SetActive(true);
-
     }
 
 

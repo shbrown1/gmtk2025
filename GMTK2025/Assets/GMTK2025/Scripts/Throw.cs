@@ -44,8 +44,7 @@ public class Throw : MonoBehaviour, IInteractable
             IsInUse = true;
             Human.SetActive(true);
             var player = FindAnyObjectByType<Player>();
-            player.Model.SetActive(false);
-            Invoke("CallRestartLoop", 1f);
+            player.RestartLoop();
         }
         else
         {

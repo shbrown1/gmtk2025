@@ -1205,11 +1205,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 019d87bff39cf604d9b7cf94c923f5b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 900
+  speed: 1200
   SuccessColor: {r: 1, g: 1, b: 1, a: 0.8}
   FailureColor: {r: 0.8, g: 0.8, b: 0.8, a: 0.8}
   successZoneHeight: 100
-  climbDistance: 1
+  climbDistance: 2
   fallDistance: 0.5
   pullingActivated: 0
   RedZone: {fileID: 827918863}
