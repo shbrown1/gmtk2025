@@ -188,20 +188,20 @@ public class Player : MonoBehaviour
             rigidbody.AddForce(Vector3.up * 5f + transform.forward * 5f, ForceMode.Impulse);
         }
 
-        if (Input.GetKeyDown(KeyCode.K))
-        {
-            transform.position = new Vector3(0, 19, 28);
-        }
+        //if (Input.GetKeyDown(KeyCode.K))
+        //{
+        //    transform.position = new Vector3(0, 19, 28);
+        //}
 
-        if(Input.GetKeyDown(KeyCode.L))
-        {
-            transform.position = new Vector3(-1.75f, -7.5f, 47);
-        }
+        //if(Input.GetKeyDown(KeyCode.L))
+        //{
+        //    transform.position = new Vector3(-1.75f, -7.5f, 47);
+        //}
 
-        if (Input.GetKeyDown(KeyCode.M))
-        {
-            transform.position = new Vector3(-5, 10, 79);
-        }
+        //if (Input.GetKeyDown(KeyCode.M))
+        //{
+        //    transform.position = new Vector3(-5, 10, 79);
+        //}
     }
 
     bool IsGrounded()

@@ -1186,6 +1186,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 827918862}
+  - {fileID: 1608061045}
   m_Father: {fileID: 203451600}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -2861,6 +2862,142 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 6f406307b2afbcc45a8fc37349c3f73f, type: 3}
   m_PrefabInstance: {fileID: 1591764985}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1608061044
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1608061045}
+  - component: {fileID: 1608061047}
+  - component: {fileID: 1608061046}
+  m_Layer: 5
+  m_Name: PressE
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1608061045
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1608061044}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 528014204}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: -512}
+  m_SizeDelta: {x: 200, y: 50}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1608061046
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1608061044}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_text: Press E to Climb
+  m_isRightToLeft: 0
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontSharedMaterials: []
+  m_fontMaterial: {fileID: 0}
+  m_fontMaterials: []
+  m_fontColor32:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+  m_enableVertexGradient: 0
+  m_colorMode: 3
+  m_fontColorGradient:
+    topLeft: {r: 1, g: 1, b: 1, a: 1}
+    topRight: {r: 1, g: 1, b: 1, a: 1}
+    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
+    bottomRight: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColorGradientPreset: {fileID: 0}
+  m_spriteAsset: {fileID: 0}
+  m_tintAllSprites: 0
+  m_StyleSheet: {fileID: 0}
+  m_TextStyleHashCode: -1183493901
+  m_overrideHtmlColors: 0
+  m_faceColor:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontSize: 36
+  m_fontSizeBase: 36
+  m_fontWeight: 400
+  m_enableAutoSizing: 0
+  m_fontSizeMin: 18
+  m_fontSizeMax: 72
+  m_fontStyle: 0
+  m_HorizontalAlignment: 2
+  m_VerticalAlignment: 512
+  m_textAlignment: 65535
+  m_characterSpacing: 0
+  m_wordSpacing: 0
+  m_lineSpacing: 0
+  m_lineSpacingMax: 0
+  m_paragraphSpacing: 0
+  m_charWidthMaxAdj: 0
+  m_TextWrappingMode: 1
+  m_wordWrappingRatios: 0.4
+  m_overflowMode: 0
+  m_linkedTextComponent: {fileID: 0}
+  parentLinkedComponent: {fileID: 0}
+  m_enableKerning: 0
+  m_ActiveFontFeatures: 6e72656b
+  m_enableExtraPadding: 0
+  checkPaddingRequired: 0
+  m_isRichText: 1
+  m_EmojiFallbackSupport: 1
+  m_parseCtrlCharacters: 1
+  m_isOrthographic: 1
+  m_isCullingEnabled: 0
+  m_horizontalMapping: 0
+  m_verticalMapping: 0
+  m_uvLineOffset: 0
+  m_geometrySortingOrder: 0
+  m_IsTextObjectScaleStatic: 0
+  m_VertexBufferAutoSizeReduction: 0
+  m_useMaxVisibleDescender: 1
+  m_pageToDisplay: 1
+  m_margin: {x: -126.8158, y: 0, z: -141.24963, w: 0}
+  m_isUsingLegacyAnimationComponent: 0
+  m_isVolumetricText: 0
+  m_hasFontAssetChanged: 0
+  m_baseMaterial: {fileID: 0}
+  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!222 &1608061047
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1608061044}
+  m_CullTransparentMesh: 1
 --- !u!1 &1651747063 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: b60720e6356885a4bb36c169332dd68c, type: 3}
@@ -3715,61 +3852,61 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: FootStep1
     clip: {fileID: 8300000, guid: a6f6734aedad506479fc9776c4a54803, type: 3}
-    volume: 0.51
+    volume: 0.2
     pitch: 1
     loops: 0
     source: {fileID: 0}
   - name: FootStep2
     clip: {fileID: 8300000, guid: cb23df982eaa2d94b9182cf9179b7265, type: 3}
-    volume: 1
+    volume: 0.2
     pitch: 1
     loops: 0
     source: {fileID: 0}
   - name: FootStep3
     clip: {fileID: 8300000, guid: bd6ee5e5392c8ef449600eeeb7cc9555, type: 3}
-    volume: 1
+    volume: 0.2
     pitch: 1
     loops: 0
     source: {fileID: 0}
   - name: LiftRock
     clip: {fileID: 8300000, guid: 16ff4552c66e72a4dad86eed95eb1533, type: 3}
-    volume: 1
+    volume: 0.5
     pitch: 1
     loops: 0
     source: {fileID: 0}
   - name: interact1
     clip: {fileID: 8300000, guid: 39bbda11c5fa3f44096819c0515c9ec5, type: 3}
-    volume: 1
+    volume: 0.3
     pitch: 1
     loops: 0
     source: {fileID: 0}
   - name: interact2
     clip: {fileID: 8300000, guid: afa4443cd3bd8444bab009fff01f61df, type: 3}
-    volume: 1
+    volume: 0.3
     pitch: 1
     loops: 0
     source: {fileID: 0}
   - name: chest
     clip: {fileID: 8300000, guid: 874ff7757920c9a4aa90d2d9a2cd3474, type: 3}
-    volume: 1
+    volume: 0.3
     pitch: 1
     loops: 0
     source: {fileID: 0}
   - name: treasure
     clip: {fileID: 8300000, guid: ca42a894ca2abdb45bd40a78ff112308, type: 3}
-    volume: 1
+    volume: 0.3
     pitch: 1
     loops: 0
     source: {fileID: 0}
   - name: wallClimbSound
     clip: {fileID: 8300000, guid: 5317cbdf703e60347b2ba1d930642a87, type: 3}
-    volume: 1
+    volume: 0.3
     pitch: 1
     loops: 0
     source: {fileID: 0}
   - name: fall
     clip: {fileID: 8300000, guid: eb76629c2d8ced94cba7e463d16b98f9, type: 3}
-    volume: 1
+    volume: 0.3
     pitch: 1
     loops: 0
     source: {fileID: 0}
